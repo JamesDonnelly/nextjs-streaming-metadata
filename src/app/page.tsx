@@ -1,5 +1,3 @@
-import Image from "next/image";
-import styles from "./page.module.css";
 import type { Metadata } from 'next'
  
 export const metadata: Metadata = {
@@ -9,8 +7,8 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div className={styles.page}>
+    <p>
       Home page
-    </div>
+    </p>
   );
 }
