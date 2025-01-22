@@ -3,14 +3,14 @@ import styles from "./page.module.css";
 import type { Metadata } from 'next'
  
 export const metadata: Metadata = {
-  title: 'Example title',
-  description: 'Example description',
+  title: 'Nested page title',
+  description: 'Nested page description',
 }
 
 export default function Page() {
   return (
     <div className={styles.page}>
-      Home page
+      Nested page
     </div>
   );
 }
