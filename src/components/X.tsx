@@ -4,7 +4,7 @@ import React from 'react';
 import Cookies from 'js-cookie';
 
 const X: React.FC<React.PropsWithChildren> = ({ children }) => {
-  Cookies.get('foobar');
+  Cookies.set('foobar', 'barfoo');
   return <div>{children}</div>;
 }
 
