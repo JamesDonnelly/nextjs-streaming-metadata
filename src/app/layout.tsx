@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from '@/theme';
+import { getUser } from "@/utils/server";
+import { AuthContextProvider } from "@/contexts/Auth/Provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,14 +26,16 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  await (await fetch('https://dog.ceo/api/breeds/image/random')).json();
+  const user = await getUser();
   
   return (
     <AppRouterCacheProvider>
       <html lang="en">
         <body className={`${geistSans.variable} ${geistMono.variable}`}>
           <ThemeProvider theme={theme}>
-            {children}
+            <AuthContextProvider user={user}>
+              {children}
+            </AuthContextProvider>
           </ThemeProvider>
         </body>
       </html>
